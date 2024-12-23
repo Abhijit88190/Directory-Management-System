@@ -1,0 +1,40 @@
+{% extends 'header.html' %}
+{% block main %}
+
+<div class="card shadow mt-3">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom: 2px solid green">All Directory Record</h5>
+        <div class="container-fluid mt-3">
+
+            <table id="example" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>S No.</th>
+                    <th>Full Name</th>
+                    <th>Email ID</th>
+                    <th>Mobile Number</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in userdetail %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.FirstName}} {{i.LastName}}</td>
+                    <td>{{i.Email}}</td>
+                    <td>{{i.Contact}}</td>
+                    <td>{{i.status}}</td>
+                    <td><a href="{% url 'viewallRecord' i.id %}" class="btn btn-primary">View</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="9"> No record found against this search</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{% include 'navigation.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directory Management System</title>
+
+    <style type="text/css">
+body {
+  background-image: url("static/images/main.jpg");
+  background-repeat: no-repeat;
+}
+
+.zoom {
+	transition: transform .1s; /* Animation */
+}
+
+.zoom:hover {
+	transform: scale(1.2); /* (150% zoom)*/
+}
+
+/*scroll button start*/
+#scrollbtn
+{
+
+position:fixed;
+bottom:20px;
+right:40px;
+z-index:99;
+border:none;
+color:red;
+background:#00abff;
+padding:10px;
+border-radius:10px;
+}
+/*scroll button end*/
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="container mt-5">
+    <form name="search" method="post">
+        {% csrf_token %}
+        <!-- Jumbotron Header -->
+        <div class="card my-4" style="border : 2px ridge green">
+            <h5 class="card-header text-info">Search By Name/Contact No.</h5>
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="searchdata"
+                           placeholder="Search by name/contact number ..."
+                           required="true">
+                    <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit"> <i class="fas fa-search"
+                                                                  style="height: 25px"></i></button>
+              </span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        {% for i in userdetail %}
+        <div class="col-sm-4 p-2 zoom">
+
+            <div class="card" style="height : 250px ; border : 1px ridge red">
+                <div class="card-body">
+                    <h4 class="card-title text-center text-danger">{{i.FirstName}} {{i.LastName}}</h4>
+                    <div><span style="color: teal"><b>Contact Number :</b></span> {{i.Contact}}</div>
+                    <div><span style="color: teal"><b>Email :</b></span> {{i.Email}}</div>
+                    <div><span style="color: teal"><b>Profession :</b></span> {{i.profession}}</div>
+                    <div><span style="color: teal"><b>Address :</b></span> {{i.Address}}</div>
+                </div>
+                <div class="card-footer bg-dark">
+                    <a href="{% url 'viewSearchData' i.id %}">View Details >></a>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container-fluid" style=" height : 100px ; background-color : black">
+    <br><br>
+    <p class="text-center text-white">
+        <script>
+				document.write(new Date().getFullYear());
+
+        </script> &copy; Directory Management System
+    </p>
+</div>
+
+
+<!--scrolltop start-->
+<div class="scrolltop float-right">
+    <i class="fa fa-arrow-up" onclick="topFunction()" id="scrollbtn"></i>
+</div>
+<script>
+  scrollbutton = document.getElementById("scrollbtn");
+  window.onscroll = function(){scrollFunction()};
+
+  function scrollFunction()
+  {
+  if(document.body.scrollTop>20 || document.documentElement.scrollTop>20)
+  {
+  scrollbutton.style.display="block";
+  }
+  else
+  {
+  scrollbutton.style.display="none";
+  }
+  }
+
+  function topFunction()
+  {
+  document.body.scrollTop = 0;//safari
+  document.documentElement.scrollTop = 0;//for chrome
+  }
+
+</script>
+
+</body>
+</html>

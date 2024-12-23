@@ -1,0 +1,111 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Login - Client Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="icon" href="{% static 'images/logo.png' %}"/>
+    <script src="{% static 'js/jquery-3.4.1.js' %}" type="text/javascript"></script>
+    <link href="{% static 'css/app.css' %}" id="app-style" rel="stylesheet" type="text/css">
+    <style>
+    	.title{
+    		position: absolute;
+    		bottom:315px;
+    		left:50%;
+    		color: #791b0c;
+    		text-shadow: 9px 6px 14px white;
+    	}
+    	.title h5{
+    	font-size:35px!important;
+    	}
+
+.accountbg{
+ background-image: url("/static/images/directory.jpg");
+ background-size: cover;
+ background-position: center;
+}
+
+    </style>
+</head>
+
+<body>
+<!-- Begin page -->
+<div class="accountbg">
+    <div class="title shadow text-center">
+        <h5>Directory Management System</h5>
+        <h5>Developed By: Panjwani Team</h5>
+    </div>
+</div>
+
+<div class="wrapper-page account-page-full">
+
+    <div class="card shadow-none">
+        <div class="card-block">
+
+            <div class="account-box">
+
+                <div class="card-box shadow-none p-4">
+                    <div class="p-2">
+                        <div class="text-center mt-4">
+                            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" height="90"
+                                                             alt="logo"></a>
+                        </div>
+
+                        <h4 class="font-size-18 mt-5 text-center">Welcome Back !</h4>
+                        <h5 class="text-muted text-center">Admin Sign in to Directory Management</h5>
+
+                        <form class="mt-4" method="post" autocomplete="off">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label" for="uname">Username</label>
+                                <input type="text" class="form-control" id="uname" name="uname"
+                                       placeholder="Enter Username" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="pwd">Password</label>
+                                <input type="password" class="form-control" name="pwd" id="pwd"
+                                       placeholder="Enter password" required>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-6 offset-6">
+                                    <button class="btn btn-primary float-right" type="submit">Log In</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="mt-5 pt-4 text-center position-relative">
+                            <p>
+                                <script>document.write(new Date().getFullYear())</script> &copy; Directory Management
+                                System
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+{% if error == "no" %}
+<script>
+    alert('Logged In Successfully');
+    window.location=('{% url 'dashboard' %}');
+
+
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Invalid Credentials, Please try again');
+
+
+</script>
+{% endif %}

@@ -1,0 +1,103 @@
+{% extends 'header.html' %}
+{% block main %}
+
+<div class="card shadow mt-2">
+    <div class="card-body">
+           <h5 style="border-bottom: 2px solid green">Add Directory</h5>
+            <div class="container-fluid mt-3 ">
+                <div class="form-group">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <label>First Name</label>
+                        <input type="text" name="FirstName" class="form-control"
+                               placeholder="Enter First Name" required>
+
+                        <label>Last Name</label>
+                        <input type="text" name="LastName" class="form-control"
+                               placeholder="Enter Last Name" required>
+
+                        <label>Email ID</label>
+                        <input type="email" name="Email" class="form-control"
+                               placeholder="Enter Email ID" required>
+
+                        <label>Contact</label>
+                        <input type="text" name="Contact" class="form-control"
+                               placeholder="Enter Contact Number" maxlength="10" required>
+                        <br>
+                        <label>Gender :</label>
+                         &emsp;<input type="radio" name="Gender" value="Male" checked="true">Male
+                         &emsp;<input type="radio" name="Gender" value="Female">Female
+                        <br>
+
+
+                         <label>Image</label>
+                        <input type="file" name="image" class="form-control" accept="image/*">
+
+                        <label>Hobbies : </label>
+                         &emsp;<input type="checkbox" name="Hobbies" value="Singing"> Singing
+                        &emsp;<input type="checkbox" name="Hobbies" value="Dancing"> Dancing
+                        &emsp;<input type="checkbox" name="Hobbies" value="Acting"> Acting
+                        &emsp;<input type="checkbox" name="Hobbies" value="Travelling"> Travelling <br>
+                        &emsp;<input type="checkbox" name="Hobbies" value="Sports" style="margin-left : 75px"> Sports
+                        &emsp;<input type="checkbox" name="Hobbies" value="Painting"> Painting
+                        &emsp;<input type="checkbox" name="Hobbies" value="Swimming"> Swimming
+                        &emsp;<input type="checkbox" name="Hobbies" value="Other"> Other
+                        <br>
+                        <label>Place of Birth</label>
+                        <select name="placeofBirth" class="form-control">
+                            <option value="">--- Select Place of Birth ---</option>
+                            <option value="Indore">Indore</option>
+                            <option value="Bhopal">Bhopal</option>
+                            <option value="Jabalpur">Jabalpur</option>
+                            <option value="Gwalior">Gwalior</option>
+                            <option value="Ujjain">Ujjain</option>
+                            <option value="Dewas">Dewas</option>
+                            <option value="Katni">Katni</option>
+                            <option value="Satna">Satna</option>
+                            <option value="Sagar">Sagar</option>
+                            <option value="Rewa">Rewa</option>
+                        </select>
+
+                        <label>Place of Work</label>
+                        <select name="placeofWork" class="form-control" size="5" multiple>
+                            <option value="Indore">Indore</option>
+                            <option value="Bhopal">Bhopal</option>
+                            <option value="Jabalpur">Jabalpur</option>
+                            <option value="Gwalior">Gwalior</option>
+                            <option value="Ujjain">Ujjain</option>
+                        </select>
+
+                        <label>Profession</label>
+                        <textarea name="profession" class="form-control"
+                                  placeholder="Enter Profession" required></textarea>
+
+                        <label>Address</label>
+                        <textarea name="Address" class="form-control"
+                                  placeholder="Enter Address" required></textarea>
+
+                        <br>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if error == "no" %}
+    <script>
+	   alert('Person detail has been added.');
+
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+    <script>
+	    alert('Something went wrong, Try Again');
+
+    </script>
+    {% endif %}
+
+    {% endblock %}
+
+

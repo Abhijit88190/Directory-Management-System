@@ -1,0 +1,114 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block main %}
+
+<div class="card shadow mt-2">
+    <div class="card-body">
+        <h5 style="border-bottom: 2px solid green">Edit Directory</h5>
+        <div class="container-fluid mt-3">
+            <div class="form-group">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <label>First Name</label>
+                    <input type="text" name="FirstName" class="form-control" value="{{userdetail.FirstName}}">
+
+                    <label>Last Name</label>
+                    <input type="text" name="LastName" class="form-control"
+                           value="{{userdetail.LastName}}">
+
+                    <label>Email ID</label>
+                    <input type="email" name="Email" class="form-control"
+                           value="{{userdetail.Email}}">
+
+                    <label>Contact</label>
+                    <input type="text" name="Contact" class="form-control"
+                           value="{{userdetail.Contact}}">
+                    <br>
+                    <label>Gender :</label>
+                    &emsp;<input type="radio" name="Gender" value="Male" {% if userdetail.Gender == 'Male' %} checked {% endif %}>Male
+                    &emsp;<input type="radio" name="Gender" value="Female" {% if userdetail.Gender == 'Female' %} checked {% endif %}>Female
+                    <br>
+
+                    <label>Image</label>
+                    {% if not userdetail.image %}
+                    <img src="{% static 'images/nopic.jpg' %}" width="100" height="100">
+                    {% else %}
+                    <img src="{{userdetail.image.url}}" width="100" height="100">
+                    {% endif %}
+
+
+                    <input type="file" name="image" class="form-control" accept="image/*">
+
+                    <label>Hobbies : [{{userdetail.Hobbies}}]</label>
+                    <br>
+                    &emsp;<input type="checkbox" name="Hobbies" value="Singing" {% if userdetail.Hobbies == 'Singing' %} checked {% endif %}> Singing
+                    &emsp;<input type="checkbox" name="Hobbies" value="Dancing" {% if userdetail.Hobbies == 'Dancing' %} checked {% endif %}> Dancing
+                    &emsp;<input type="checkbox" name="Hobbies" value="Acting"{% if userdetail.Hobbies == 'Acting' %} checked {% endif %}> Acting
+                    &emsp;<input type="checkbox" name="Hobbies" value="Travelling" {% if userdetail.Hobbies == 'Travelling' %} checked {% endif %}> Travelling <br>
+                    <input type="checkbox" name="Hobbies" value="Sports" {% if userdetail.Hobbies == 'Sports' %} checked {% endif %}> Sports
+                    &emsp;<input type="checkbox" name="Hobbies" value="Painting" {% if userdetail.Hobbies == 'Painting' %} checked {% endif %}> Painting
+                    &emsp;<input type="checkbox" name="Hobbies" value="Swimming" {% if userdetail.Hobbies == 'Swimming' %} checked {% endif %}> Swimming
+                    &emsp;<input type="checkbox" name="Hobbies" value="Other" {% if userdetail.Hobbies == 'Other' %} checked {% endif %}> Other
+                    <br>
+                    <label>Place of Birth</label>
+                    <select name="placeofBirth" class="form-control">
+                        <option value="">--- Select Place of Birth ---</option>
+                        <option value="Indore" {% if userdetail.placeofBirth == 'Indore' %} selected {% endif %}>Indore</option>
+                        <option value="Bhopal" {% if userdetail.placeofBirth == 'Bhopal' %} selected {% endif %}>Bhopal</option>
+                        <option value="Jabalpur" {% if userdetail.placeofBirth == 'Jabalpur' %} selected {% endif %}>Jabalpur</option>
+                        <option value="Gwalior" {% if userdetail.placeofBirth == 'Gwalior' %} selected {% endif %}>Gwalior</option>
+                        <option value="Ujjain" {% if userdetail.placeofBirth == 'Ujjain' %} selected {% endif %}>Ujjain</option>
+                        <option value="Dewas" {% if userdetail.placeofBirth == 'Dewas' %} selected {% endif %}>Dewas</option>
+                        <option value="Katni" {% if userdetail.placeofBirth == 'Katni' %} selected {% endif %}>Katni</option>
+                        <option value="Satna" {% if userdetail.placeofBirth == 'Satna' %} selected {% endif %}>Satna</option>
+                        <option value="Sagar" {% if userdetail.placeofBirth == 'Sagar' %} selected {% endif %}>Sagar</option>
+                        <option value="Rewa" {% if userdetail.placeofBirth == 'Rewa' %} selected {% endif %}>Rewa</option>
+                    </select>
+
+                    <label>Place of Work [{{userdetail.placeofWork}}]</label>
+                    <select name="placeofWork" class="form-control" size="5" multiple>
+                        <option value="Indore">Indore</option>
+                        <option value="Bhopal">Bhopal</option>
+                        <option value="Jabalpur">Jabalpur</option>
+                        <option value="Gwalior">Gwalior</option>
+                        <option value="Ujjain">Ujjain</option>
+                    </select>
+
+                    <label>Profession</label>
+                    <textarea name="profession" class="form-control">{{userdetail.profession}}</textarea>
+
+                    <label>Address</label>
+                    <textarea name="Address" class="form-control">{{userdetail.Address}}</textarea>
+
+                    <label>Status</label>
+                    <select name="status" class="form-control">
+                        <option value="private" {% if userdetail.status == 'private' %} selected {% endif %}>Private</option>
+                        <option value="public" {% if userdetail.status == 'public' %} selected {% endif %}>Public</option>
+                    </select>
+
+                    <br>
+                    <input type="submit" value="Update" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+	   alert('Directory has been Updated');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+	    alert('Something went wrong, Try Again');
+
+
+</script>
+{% endif %}
+
+{% endblock %}
+
+

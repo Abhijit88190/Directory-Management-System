@@ -1,0 +1,103 @@
+.bg-custom{
+ background-color : #581a47;
+}
+.navbar-brand{
+  font-weight: bold;
+}
+
+.nav-link:hover{
+  color: yellow !important;
+  background-color:black;
+  border-radius:10px;
+}
+
+.navbar-brand:hover{
+  color: lightblue !important;
+
+}
+
+.mydivstyle:hover{
+box-shadow:0 0 15px 0 rgba(0,0,0,0.3);
+transform:translateY(-20px);
+}
+
+.mydivstyleone:hover{
+box-shadow:0 0 15px 0 rgba(0,0,0,0.3);
+transform:translateY(-20px);
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5);
+}
+
+.page-title{
+    color : #9b401e;
+    font-size: 2em;/*1em = 16px*/
+    font-weight: 600;
+    padding: .5em 1em;/*top bottom se 5em and left right se 1 em*/
+    box-shadow: 0px 0px 2px #b0b0b0;
+    text-transform: uppercase;
+    width: 30%;
+    margin: 0 auto;
+}
+
+
+
+
+
+/*about page css start */
+
+ .section-subtitle{
+margin-bottom : 7px;
+padding-left : 7px;
+
+line-height : 1;
+text-transform : uppercase;
+color : #aaaaaa;
+border-left : 3px solid;
+font-size : 70px;
+font-family : tahoma;
+}
+
+.section-main-title{
+margin-top : 0;
+margin-bottom : 37px;
+font-size : 30px;
+line-height : 1.27;
+
+}
+
+/*.section-main-title strong{
+font-weight : bold;
+}*/
+
+.about-box{
+-webkit-box-shadow:0 0 0 10px #000000 inset; /* black - #000000 */
+box-shadow:0 0 0 10px #000000 inset,
+margin-right : 0;
+margin-top:0;
+position:relative;
+display:block
+}
+
+.about-box img{
+transform:translateY(30px) translateX(-30px);
+-webkit-transform:translateY(30px) translateX(-30px);
+width:100%;
+z-index:1;
+
+}
+
+
+
+/*contact page css start */
+#contact{
+background:url("/static/images/contact.jpg") no-repeat;
+background-size : 100% 100%;
+}
+
+
+/*Use "/static/" before your image URL*/
+/*contact page css end */

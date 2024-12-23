@@ -1,0 +1,75 @@
+{% extends 'header.html' %}
+{% block main %}
+
+<div class="card shadow mt-5">
+    <div class="card-body">
+            <h5 class="p-2" style="border-bottom: 2px solid green;">Welcome Administrator</h5>
+            <div class="container-fluid mt-3">
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <!-- Info boxes -->
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <a href="{% url 'allRecord' %}" class="text-dark">
+                                    <div class="info-box">
+										<span class="info-box-icon bg-info elevation-1"><i
+                                                class="fas fa-book-open"></i></span>
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Total Records</span> <span
+                                                class="info-box-number"> {{totalRecord}}
+											</span>
+                                        </div>
+
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                </a>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <a href="{% url 'publicRecord' %}" class="text-dark">
+                                    <div class="info-box mb-3">
+										<span class="info-box-icon bg-danger elevation-1"><i
+                                                class="fas fa-users"></i></span>
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Total Public Record</span> <span
+                                                class="info-box-number"> {{totalpublicRecord}}
+											</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div> <!-- /.info-box -->
+                                </a>
+                            </div>
+                            <!-- /.col -->
+
+                            <!-- /.col -->
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <a href="{% url 'privateRecord' %}" class="text-dark">
+                                    <div class="info-box mb-3">
+										<span class="info-box-icon bg-success elevation-1"><i
+                                                class="fas fa-users"></i></span>
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Total Private Record</span> <span
+                                                class="info-box-number"> {{totalprivateRecord}}
+											</span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>  <!-- /.info-box -->
+                                </a>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

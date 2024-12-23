@@ -1,0 +1,72 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block main %}
+
+<div class="card shadow mt-3">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom: 2px solid green">View All Directory Record</h5>
+        <div class="container-fluid mt-3">
+
+            <table id="example" class="table table-striped table-bordered mt-5">
+
+                <tr>
+                    <th>Full Name</th>
+                    <td>{{userdetail.FirstName}} {{userdetail.LastName}}</td>
+
+                    <th>Contact Number</th>
+                    <td>{{userdetail.Contact}}</td>
+                </tr>
+
+                <tr>
+                    <th>Email ID</th>
+                    <td>{{userdetail.Email}}</td>
+
+                    <th>Gender</th>
+                    <td>{{userdetail.Gender}}</td>
+                </tr>
+
+                <tr>
+                    <th>Place of Birth</th>
+                    <td>{{userdetail.placeofBirth}}</td>
+
+                    <th>Place of Work</th>
+                    <td>{{userdetail.placeofWork}}</td>
+                </tr>
+
+                <tr>
+                    <th>Profession</th>
+                    <td>{{userdetail.profession}}</td>
+
+                    <th>Hobbies</th>
+                    <td>{{userdetail.Hobbies}}</td>
+                </tr>
+
+                <tr>
+                    <th>Address</th>
+                    <td>{{userdetail.Address}}</td>
+
+                    <th>Status</th>
+                    <td>{{userdetail.status}}</td>
+                </tr>
+
+                <tr>
+                {% if not userdetail.image %}
+                <th>Profile Pic</th>
+                <td colspan="3"><img src="{% static 'images/nopic.jpg' %}" class="mr-3 mt-3 rounded-circle" width="100"
+                         height="100"></td>
+
+                {% else %}
+                <th>Profile Pic</th>
+                <td colspan="3"><img src="{{userdetail.image.url}}" class="mr-3 mt-3 rounded-circle" width="100" height="100"></td>
+
+                {% endif %}
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% include 'navigation.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directory Management System</title>
+
+<style>
+body {
+  background-image: url("/static/images/main.jpg");
+  background-repeat: no-repeat;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <div class="col-sm-12 p-2">
+
+        <div class="card" style="background-color: #b5ac88f2">
+            <div class="card-body">
+                <h4 class="card-title text-center">{{userdetail.FirstName}} {{userdetail.LastName}}</h4>
+                 <hr>
+
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Profile Pic : </b>
+                    </div>
+                    {% if not userdetail.image %}
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        <img src="{% static 'images/nopic.jpg' %}" class="rounded-circle" width="100" height="70">
+                    </div>
+                    {% else %}
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        <img src="{{userdetail.image.url}}" class="rounded-circle" width="100" height="70">
+                    </div>
+                    {% endif %}
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Contact Number : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{userdetail.Contact}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Email ID : </b>
+                    </div>
+                    <div class="col-md-3">
+                        {{userdetail.Email}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Profession : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{userdetail.profession}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Place of Birth : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{userdetail.placeofBirth}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Place of Work : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{userdetail.placeofWork}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Hobbies : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{userdetail.Hobbies}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Gender : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{userdetail.Gender}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Address : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{userdetail.Address}}
+                    </div>
+                </DIV>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+</body>
+</html>

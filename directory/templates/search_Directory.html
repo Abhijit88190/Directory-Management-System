@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+{% block main %}
+
+<div class="card shadow mt-5">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom: 2px solid green">Search Directory</h5><br>
+        <div class="container-fluid mt-2">
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label><b>Search by Name/Mobile Number</b></label><br>
+                        <input type=text name="searchdata" class="form-control"
+                               placeholder="Enter Name/Mobile Number" required>
+                        <br>
+                        <input type=submit value="Submit" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br>
+
+{% if userdetail %}
+<div class="card shadow">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive table--no-card m-b-30">
+                    <h4 align="center">Search Report against "{{sd}}" keyword </h4>
+                    <hr/>
+                    <table id="example" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>S No.</th>
+                            <th>Full Name</th>
+                            <th>Email ID</th>
+                            <th>Mobile Number</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in userdetail %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{i.FirstName}} {{i.LastName}}</td>
+                            <td>{{i.Email}}</td>
+                            <td>{{i.Contact}}</td>
+                            <td><a href="{% url 'viewallRecord' i.id %}" class="text-primary">View</a></td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="9"> No record found against this search</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock  %}

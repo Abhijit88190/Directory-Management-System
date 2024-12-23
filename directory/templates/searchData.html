@@ -1,0 +1,141 @@
+{% include 'navigation.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directory Management System</title>
+
+<style>
+body {
+  background-image: url("static/images/main.jpg");
+  background-repeat: no-repeat;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container mt-5">
+    <h4 align="center">Search Report against "{{sd}}" keyword </h4>
+    {% for i in userDtls %}
+    <div class="col-sm-12 p-2">
+
+        <div class="card" style="background-color: #b5ac88f2">
+            <div class="card-body">
+                <h4 class="card-title text-center">{{i.FirstName}} {{i.LastName}}</h4>
+                 <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Profile Pic : </b>
+                    </div>
+                    {% if not i.image %}
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        <img src="{% static 'images/nopic.jpg' %}" class="rounded-circle" width="100" height="70">
+                    </div>
+                    {% else %}
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        <img src="{{i.image.url}}" class="rounded-circle" width="100" height="70">
+                    </div>
+                    {% endif %}
+
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Contact Number : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{i.Contact}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Email ID : </b>
+                    </div>
+                    <div class="col-md-3">
+                        {{i.Email}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Profession : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{i.profession}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Place of Birth : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{i.placeofBirth}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Place of Work : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{i.placeofWork}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Hobbies : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{i.Hobbies}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Gender : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{i.Gender}}
+                    </div>
+                </DIV>
+                <hr>
+
+                <DIV class="row">
+                    <div class="col-md-3 offset-3">
+                        <b>Address : </b>
+                    </div>
+                    <div class="col-md-3" style="text-transform: capitalize">
+                        {{i.Address}}
+                    </div>
+                </DIV>
+
+            </div>
+        </div>
+    </div>
+
+    {% empty %}
+    <div class="col-lg-12 col-md-6 mb-4" style="padding-top:2%">
+        <div class="card h-20">
+            <div class="card-body">
+                <h4 class="card-title" align="center">No Result found against this search</h4>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br><br><br>
+</body>
+</html>
